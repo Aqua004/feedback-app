@@ -2,8 +2,8 @@ pipeline {
     agent any
     stages {
         stage('Checkout') { steps { checkout scm } }
-        stage('Build')    { steps { sh 'mvn clean package' } }
-        stage('Test')     { steps { sh 'mvn test' } }
+        stage('Build')    { steps { bat 'mvn clean package' } }
+        stage('Test')     { steps { bat 'mvn test' } }
         stage('Archive')  { steps { archiveArtifacts artifacts: 'target/*.jar', fingerprint: true } }
     }
 }
